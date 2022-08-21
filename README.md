@@ -41,6 +41,10 @@ Animations:
 
         anima.toggle(plugin.getInstance());
         
+        or
+        
+        anima.play(plugin.getInstance());
+        
 GUI Utilities:
 
 The GUI utilities class helps with creating itemstacks and other general things.
