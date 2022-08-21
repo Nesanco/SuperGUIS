@@ -59,3 +59,44 @@ Example:
 
     GUIUtility util = new GUIUtility(); 
     ItemStack stack = util.buildItem(Material.YELLOW_WOOL, "name", "lore")
+    
+Example of everything:
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent e) {
+        GUIUtility util = new GUIUtility();
+
+        GUI gui = new GUI(27, "E", GUIType.CHEST);
+        gui.content("xxxxxxxxxx###xxx x");
+        gui.addFormat("#", util.buildItem(Material.DIRT, "e", "e"));
+        gui.addFormat("x", util.buildItem(Material.DIAMOND, "e", "e"));
+        gui.open(e.getPlayer());
+
+        gui.onClose(Casino.getInstance(), new BukkitRunnable() {
+            @Override
+            public void run() {
+                Bukkit.broadcastMessage("bye world!");
+                this.cancel();
+            }
+        });
+
+        Animation anima = new Animation(1, gui);
+        anima.newFrame(util.buildItem(Material.RED_WOOL, "e", "e"));
+        anima.newFrame(util.buildItem(Material.ORANGE_WOOL, "e", "e"));
+        anima.newFrame(util.buildItem(Material.YELLOW_WOOL, "e", "e"));
+        anima.newFrame(util.buildItem(Material.BLUE_WOOL, "e", "e"));
+
+        GUIButton button = new GUIButton(2, gui);
+
+        button.setAction(Casino.getInstance(), new BukkitRunnable() {
+            @Override
+            public void run() {
+                Bukkit.broadcastMessage("hello world!");
+                this.cancel();
+            }
+        });
+
+        anima.setTime(40);
+
+        anima.toggle(Casino.getInstance());
+    }
