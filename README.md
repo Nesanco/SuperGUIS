@@ -47,5 +47,5 @@ The GUI utilities class helps with creating itemstacks and other general things.
 
 Example:
 
-GUIUtility util = new GUIUtility(); 
-ItemStack stack = util.buildItem(Material.YELLOW_WOOL, "name", "lore")
+    GUIUtility util = new GUIUtility(); 
+    ItemStack stack = util.buildItem(Material.YELLOW_WOOL, "name", "lore")
