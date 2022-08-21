@@ -1,6 +1,7 @@
 package nesancodev.com.superguis.gui.gui;
 
 import nesancodev.com.superguis.gui.gui.listeners.ClickEvent;
+import nesancodev.com.superguis.gui.gui.listeners.CloseEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -18,6 +19,7 @@ import java.util.List;
 
 public class GUI implements Listener {
     public static ArrayList<Inventory> lockedGUI = new ArrayList<>();
+    public static HashMap<Inventory, BukkitRunnable> onclose = new HashMap<>();
     public static Plugin instance;
 
     private Inventory inv;
@@ -118,12 +120,11 @@ public class GUI implements Listener {
         p.openInventory(inv);
     }
 
-    @EventHandler
-    private void onInventoryClick(InventoryClickEvent e) {
-        for (Inventory inv : GUI.lockedGUI) {
-            if (e.getInventory() == inv) {
-                e.setCancelled(true);
-            }
-        }
+    public void onClose(Plugin plugin, BukkitRunnable rb) {
+        instance = plugin;
+
+        onclose.put(inv, rb);
+
+        plugin.getServer().getPluginManager().registerEvents(new CloseEvent(), plugin);
     }
 }
