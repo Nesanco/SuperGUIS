@@ -19,7 +19,7 @@ public class GUIButton {
         this.inv = gui.getInventoryRaw();
     }
 
-    public void setAction(BukkitRunnable rb, Plugin plugin) {
+    public void setAction(Plugin plugin, BukkitRunnable rb) {
         HashMap<Integer, BukkitRunnable> map = new HashMap<>();
         map.put(slot, rb);
         stats.put(inv, map);
