@@ -1,27 +1,46 @@
 package nesancodev.com.superguis.gui.gui;
 
+import nesancodev.com.superguis.gui.gui.listeners.ClickEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class GUI {
+public class GUI implements Listener {
+    public static ArrayList<Inventory> lockedGUI = new ArrayList<>();
+    public static Plugin instance;
+
     private Inventory inv;
     private String format;
     private GUIType type;
     private String title;
-    private HashMap<String, Animation> animations = new HashMap<>();
     private HashMap<String, ItemStack> formatMap = new HashMap<>();
 
     public GUI(int size, String title, GUIType type) {
         this.inv = Bukkit.createInventory(null, size, title);
         this.type = type;
         this.title = title;
+    }
+
+    public void lock(Plugin plugin) {
+        instance = plugin;
+        lockedGUI.add(inv);
+
+        plugin.getServer().getPluginManager().registerEvents(new ClickEvent(), plugin);
+    }
+
+    public void addButton(Integer slot, BukkitRunnable code) {
+
     }
 
     public Inventory getInventoryRaw() {
@@ -97,5 +116,14 @@ public class GUI {
         }
 
         p.openInventory(inv);
+    }
+
+    @EventHandler
+    private void onInventoryClick(InventoryClickEvent e) {
+        for (Inventory inv : GUI.lockedGUI) {
+            if (e.getInventory() == inv) {
+                e.setCancelled(true);
+            }
+        }
     }
 }
