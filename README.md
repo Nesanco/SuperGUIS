@@ -60,6 +60,22 @@ Example:
     GUIUtility util = new GUIUtility(); 
     ItemStack stack = util.buildItem(Material.YELLOW_WOOL, "name", "lore")
     
+Buttons:
+
+Create buttons to run code when clicking a specified item in a slot.
+
+Example:
+
+        GUIButton button = new GUIButton(2, gui);
+
+        button.setAction(Casino.getInstance(), new BukkitRunnable() {
+            @Override
+            public void run() {
+                Bukkit.broadcastMessage("hello world!");
+                this.cancel();
+            }
+        });
+    
 Example of everything:
 
     @EventHandler
