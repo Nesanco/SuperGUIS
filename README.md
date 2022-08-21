@@ -32,6 +32,7 @@ Examples:
 The content will be translated into itemstacks based on the formats you create.
 The example above would show:
 ![image](https://user-images.githubusercontent.com/80917510/185811314-692a4622-29f2-4157-a8a8-d259a34109b0.png)
+
 (Includes the animation ignore that)
     
 Animations:
