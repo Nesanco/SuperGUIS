@@ -3,10 +3,6 @@ Having issues with creating GUIs? This library will hopefully help with that.
 This has no use for server owners.
 
 Maven:
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
         
         <dependency>
             <groupId>com.github.Nesanco</groupId>
@@ -14,6 +10,11 @@ Maven:
             <version>version</version>
             <scope>compile</scope>
         </dependency>
+        
+                <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
         
 Examples:
 
