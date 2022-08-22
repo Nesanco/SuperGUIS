@@ -32,8 +32,8 @@ Example:
     
 You can use the same variable to call .buildItem, so if you want, store the variable.
 
-
-
+Creating and formatting works by creating a string with characters, those characters will then be turned into the specified item stack so you can easily
+visualize guis and how they will look.
         
 Examples:
 
