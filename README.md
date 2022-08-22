@@ -75,6 +75,16 @@ Example:
                 this.cancel();
             }
         });
+        
+Types of inventories:
+
+You can create different types of inventories using a similar method:
+
+    GUI gui = new GUI("E", GUIType.TYPE);
+    
+Example:
+    
+    GUI gui = new GUI("E", GUIType.SHULKER);
     
 Example of everything:
 
