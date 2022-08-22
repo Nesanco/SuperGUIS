@@ -1,13 +1,10 @@
 package nesancodev.com.superguis.gui.gui.listeners;
 
-import nesancodev.com.superguis.gui.gui.GUI;
-import nesancodev.com.superguis.gui.gui.GUIButton;
+import nesancodev.com.superguis.gui.gui.guis.GUI;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import java.util.HashMap;
 
 public class CloseEvent implements Listener {
 

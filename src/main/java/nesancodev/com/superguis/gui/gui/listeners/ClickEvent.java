@@ -1,6 +1,6 @@
 package nesancodev.com.superguis.gui.gui.listeners;
 
-import nesancodev.com.superguis.gui.gui.GUI;
+import nesancodev.com.superguis.gui.gui.guis.GUI;
 import nesancodev.com.superguis.gui.gui.GUIButton;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

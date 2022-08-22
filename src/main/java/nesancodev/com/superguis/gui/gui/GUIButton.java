@@ -1,10 +1,10 @@
 package nesancodev.com.superguis.gui.gui;
 
+import nesancodev.com.superguis.gui.gui.guis.GUI;
 import nesancodev.com.superguis.gui.gui.listeners.ClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
 
 import java.util.HashMap;
 

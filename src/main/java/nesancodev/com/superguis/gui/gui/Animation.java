@@ -1,5 +1,6 @@
 package nesancodev.com.superguis.gui.gui;
 
+import nesancodev.com.superguis.gui.gui.guis.GUI;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
