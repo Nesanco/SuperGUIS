@@ -1,0 +1,4 @@
+name: SuperGUIS
+version: '${project.version}'
+main: nesancodev.com.superguis.SuperGUIS
+authors: [ Nesanco ]
