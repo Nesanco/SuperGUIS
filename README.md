@@ -16,24 +16,42 @@ Maven:
             <url>https://jitpack.io</url>
         </repository>
         
+Register your main class:
+
+In your main class get a new GUIUtility. Then use .register(your main class) to register the plugin.
+Only call this method once.
+
+Example:
+
+    @Override
+    public void onEnable() {
+        GUIUtility util = new GUIUtility();
+        util.register(this);
+
+    }
+    
+You can use the same variable to call .buildItem, so if you want, store the variable.
+
+
+
+        
 Examples:
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
-        GUIUtility util = new GUIUtility()
-    
-        GUI gui = new GUI(27, "title", GUIType.CHEST);
+        GUIUtility util = new GUIUtility();
+
+        GUI gui = new GUI("title", GUIType.DEFAULT, 45);
         gui.content("xxxxxxxxxx###xxx x");
-        gui.addFormat("#", util.buildItem(Material.DIRT, "e", "e"));
-        gui.addFormat("x", util.buildItem(Material.DIAMOND, "e", "e"));
+        gui.addFormat("#", util.buildItem(Material.DIRT, "name", "lore"));
+        gui.addFormat("x", util.buildItem(Material.DIAMOND, "name", "lore"));
         gui.open(e.getPlayer());
-    }
     
 The content will be translated into itemstacks based on the formats you create.
 The example above would show:
 ![image](https://user-images.githubusercontent.com/80917510/185811314-692a4622-29f2-4157-a8a8-d259a34109b0.png)
 
-(Includes the animation ignore that)
+(Ignore the red wool)
     
 Animations:
 
@@ -43,22 +61,24 @@ Animations:
         anima.newFrame(util.buildItem(Material.YELLOW_WOOL, "e", "e"));
         anima.newFrame(util.buildItem(Material.BLUE_WOOL, "e", "e"));
 
-        anima.setTime(40);
+        anima.setTime(ticks);
 
-        anima.toggle(plugin.getInstance());
+        anima.toggle();
         
         or
         
-        anima.play(plugin.getInstance());
+        anima.play();
         
 GUI Utilities:
 
-The GUI utilities class helps with creating itemstacks and other general things.
+The GUI utilities class helps with creating itemstacks and other general things, it is also used to register your main class.
 
 Example:
 
     GUIUtility util = new GUIUtility(); 
     ItemStack stack = util.buildItem(Material.YELLOW_WOOL, "name", "lore")
+    
+    util.register(instance);
     
 Buttons:
 
@@ -66,9 +86,9 @@ Create buttons to run code when clicking a specified item in a slot.
 
 Example:
 
-        GUIButton button = new GUIButton(2, gui);
+        GUIButton button = new GUIButton(slot number, gui);
 
-        button.setAction(Casino.getInstance(), new BukkitRunnable() {
+        button.setAction(new BukkitRunnable() {
             @Override
             public void run() {
                 Bukkit.broadcastMessage("hello world!");
@@ -79,11 +99,11 @@ Types of inventories:
 
 You can create different types of inventories using a similar method:
 
-    GUI gui = new GUI("E", GUIType.TYPE);
+    GUI gui = new GUI("title", GUIType.TYPE);
     
 Example:
     
-    GUI gui = new GUI("E", GUIType.SHULKER);
+    GUI gui = new GUI("title", GUIType.SHULKER);
     
 Example of everything:
 
@@ -91,13 +111,13 @@ Example of everything:
     public void onPlayerJoin(PlayerJoinEvent e) {
         GUIUtility util = new GUIUtility();
 
-        GUI gui = new GUI(27, "E", GUIType.CHEST);
+        GUI gui = new GUI("E", GUIType.DEFAULT, 45);
         gui.content("xxxxxxxxxx###xxx x");
         gui.addFormat("#", util.buildItem(Material.DIRT, "e", "e"));
         gui.addFormat("x", util.buildItem(Material.DIAMOND, "e", "e"));
         gui.open(e.getPlayer());
 
-        gui.onClose(Casino.getInstance(), new BukkitRunnable() {
+        gui.onClose(new BukkitRunnable() {
             @Override
             public void run() {
                 Bukkit.broadcastMessage("bye world!");
@@ -112,7 +132,7 @@ Example of everything:
 
         GUIButton button = new GUIButton(2, gui);
 
-        button.setAction(Casino.getInstance(), new BukkitRunnable() {
+        button.setAction(new BukkitRunnable() {
             @Override
             public void run() {
                 Bukkit.broadcastMessage("hello world!");
@@ -121,5 +141,5 @@ Example of everything:
 
         anima.setTime(40);
 
-        anima.toggle(Casino.getInstance());
+        anima.toggle();
     }
