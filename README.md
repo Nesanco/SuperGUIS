@@ -72,7 +72,6 @@ Example:
             @Override
             public void run() {
                 Bukkit.broadcastMessage("hello world!");
-                this.cancel();
             }
         });
         
@@ -102,7 +101,6 @@ Example of everything:
             @Override
             public void run() {
                 Bukkit.broadcastMessage("bye world!");
-                this.cancel();
             }
         });
 
@@ -118,7 +116,6 @@ Example of everything:
             @Override
             public void run() {
                 Bukkit.broadcastMessage("hello world!");
-                this.cancel();
             }
         });
 
