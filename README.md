@@ -86,12 +86,16 @@ Create buttons to run code when clicking a specified item in a slot.
 
 Example:
 
-        GUIButton button = new GUIButton(slot number, gui);
+        GUIButton button = new GUIButton(2, gui);
 
         button.setAction(new BukkitRunnable() {
             @Override
             public void run() {
                 Bukkit.broadcastMessage("hello world!");
+
+                Bukkit.broadcastMessage("click type: " + gui.getClick().toString());
+                Bukkit.broadcastMessage("clicked item: " + gui.getClickedItem().toString());
+                Bukkit.broadcastMessage("clicked slot: " + gui.getClickedSlot().toString());
             }
         });
         
@@ -136,6 +140,10 @@ Example of everything:
             @Override
             public void run() {
                 Bukkit.broadcastMessage("hello world!");
+
+                Bukkit.broadcastMessage("click type: " + gui.getClick().toString());
+                Bukkit.broadcastMessage("clicked item: " + gui.getClickedItem().toString());
+                Bukkit.broadcastMessage("clicked slot: " + gui.getClickedSlot().toString());
             }
         });
 
